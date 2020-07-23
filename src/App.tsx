@@ -1,25 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [startButton, setStartButton] = useState("START");
+
+  const handleStart = () => {
+    startButton === "START" ? setStartButton("PAUSE") : setStartButton("START");
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1 className="time">25:00</h1>
+      <div className="btn-group">
+        <button className="btn start" onClick={() => handleStart()}>
+          {startButton}
+        </button>
+        <button className="btn reset">RESET</button>
+      </div>
+    </>
   );
 }
 
